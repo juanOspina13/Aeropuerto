@@ -17,5 +17,9 @@ Modificacion
     sbDepartureTime     varchar2(1024),
     sbLandingTime       varchar2(1024),   
     sbAirplaneId        varchar(256),     --FK
-    sbStatus            varchar2(256)    
+    sbStatus            varchar2(256),
+    sbDescription       varchar2(1024)
 );
+
+/
+SELECT count(*) FROM airplane;

@@ -17,4 +17,5 @@
 ALTER TABLE flight ADD
     CONSTRAINT fk_flight_airplane
     FOREIGN KEY (sbAirplaneId)
-    REFERENCES  fuel_type (sbId);
+    REFERENCES  airplane (sbId);
+    

@@ -14,8 +14,9 @@ Modificacion
 
 */ 
 CREATE TABLE airplane_mode (
-    sbId varchar2(256)  NOT NULL,
-    sbDescription varchar2(256)  NOT NULL,
-    sbNotes varchar2(1024)   NOT NULL
+    sbId varchar2(256),
+    sbDescription varchar2(256) ,
+    sbNotes varchar2(1024)  
 ) ;
+
 
