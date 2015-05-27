@@ -1,0 +1,5 @@
+Al aeropuerto le entran planos con informacion (tabla detalle)
+con base a esa información se liquidan uso del aeropuerto
+en el aeropuerto se liquida: uso por aeropuerto y consumo de combustible
+se totaliza (aeropuerto+combustible)
+reporte de tanqueos por usuario
