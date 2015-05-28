@@ -12,7 +12,6 @@ Fecha          IDEntrega
 02-03-2014    <Autor>SAONNNNN
 Modificacion
 */CREATE TABLE track_cost(
-    sbId                varchar2(256),      --PK
     sbTamanhoAvionId    varchar2(256),      --FK 
     sbPlaneModeId       varchar2(256),      --FK
     sbTrackId           varchar2(256),      --FK
