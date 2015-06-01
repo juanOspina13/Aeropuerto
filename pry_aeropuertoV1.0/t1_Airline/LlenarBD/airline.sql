@@ -4076,3 +4076,19 @@ insert into track_cost (sbTamanhoAvionId, sbTrackId, sbPlaneModeId, sbAirlineId,
 insert into track_cost (sbTamanhoAvionId, sbTrackId, sbPlaneModeId, sbAirlineId, nucost) values (2, 9, 2, 97, 115039);
 insert into track_cost (sbTamanhoAvionId, sbTrackId, sbPlaneModeId, sbAirlineId, nucost) values (1, 4, 2, 85, 219211);
 insert into track_cost (sbTamanhoAvionId, sbTrackId, sbPlaneModeId, sbAirlineId, nucost) values (3, 1, 1, 35, 19135);
+/
+/*
+ INSERCION EN USUARIOS
+*/
+SELECT * FROM users
+/
+INSERT INTO USERS VALUES('1','Juan Manuel Ospina','jospina','cobain','1','')
+INSERT INTO USERS VALUES('2','Pepe Hurtado','pepe','cobain','1','')
+/
+/*
+  Insercion para costos de combustible
+*/
+SELECT * FROM fuel_cost
+--INSERT INTO fuel_cost VALUES('1','1',')
+/
+SELECT * FROM track_cost

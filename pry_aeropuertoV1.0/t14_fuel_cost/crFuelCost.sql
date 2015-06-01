@@ -13,9 +13,9 @@ Fecha          IDEntrega
 Modificacion
 */
 CREATE TABLE fuel_cost(
-    sbId                varchar2(256),
     sbAirplaneSize      varchar2(256),      --FK
     sbAirlineId         varchar2(256),      --FK
     sbFuelTypeId        varchar2(256),      --FK
     nuCost              number
 );
+

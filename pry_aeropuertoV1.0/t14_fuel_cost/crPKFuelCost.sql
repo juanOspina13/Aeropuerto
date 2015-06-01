@@ -14,5 +14,7 @@ Modificacion
 */
 ALTER TABLE fuel_cost ADD
     CONSTRAINT fuel_cost_pk
-    PRIMARY KEY (sbId)
+    PRIMARY KEY (sbAirplaneSize,sbAirlineId,sbFuelTypeId)
     USING INDEX ENABLE;
+
+ 
