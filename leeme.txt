@@ -1,6 +1,15 @@
 Temas a considerar:
-Foráneas,
-índices,
-Arquitectura: BC-BO-
-traida granulada de información para reportes,
-Mokaroo
+Primarias:
+Secuencias:
+PB's:Listo:
+Foráneas:Listo
+índices:Faltan
+Arquitectura: BC-BO-BA
+
+ir más alla:
+totalizar desde el query y manual,
+cruds para todo lo que sea necesario,
+generacion PDFS
+
+Preocupaciones:
+Framework : MD(baja)-PB(alta)-PI(media)
