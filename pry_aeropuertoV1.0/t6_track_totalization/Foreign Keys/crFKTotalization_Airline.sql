@@ -14,7 +14,7 @@
  02-03-2014    <Autor>SAONNNNN
  Modificacion
 */
-ALTER TABLE totalization ADD
-    CONSTRAINT fk_totalization_airplane_mode
-    FOREIGN KEY (sbAirline_id)
+ALTER TABLE track_totalization ADD
+    CONSTRAINT fk_traTota_airline
+    FOREIGN KEY (sbAirlineId)
     REFERENCES  airline (sbId);

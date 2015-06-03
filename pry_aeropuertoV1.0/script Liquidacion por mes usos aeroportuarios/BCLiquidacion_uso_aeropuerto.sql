@@ -1,15 +1,17 @@
+/*
+  Paquete que liquida el uso de pistas por aerolinea
+*/
 CREATE OR REPLACE PACKAGE BC_LIQAIR
 IS  
   TYPE  result_airline is RECORD 
       (
-          sbAirlineId             varchar2(256),                                                  ---OJO TIENNE QUE SER CON %TYPE
+          sbAirlineId             varchar2(256),       --debería ser con %type
           daLandingTime           date,
           sbAirlineDescription    varchar2(256),
           nuTotal                 number
       );
       
     TYPE results_airline IS TABLE OF result_airline INDEX BY BINARY_INTEGER;
-    
     TYPE  airlines IS TABLE OF airline%rowtype INDEX BY binary_integer;
     
     PROCEDURE getTrackCost (
@@ -17,6 +19,7 @@ IS
         daLiquidationDate   in date,
         airline_total       out results_airline
          );
+         
 END BC_LIQAIR;
 /
     
@@ -40,34 +43,36 @@ IS
         sbYear            varchar2(256);
         
     BEGIN
-        sbMonth:=EXTRACT
+        sbMonth :=EXTRACT
                     (
                         Month FROM daLiquidationDate
                     );
    
-        sbYear:= EXTRACT 
+        sbYear := EXTRACT 
                   (
                       year FROM daLiquidationDate
                   );
         
-        select_fields:='airline.sbID,
-                        detail.daLandingTime,
-                        airline.sbDescription,
-                SUM(track_cost.nuCost)costo';
+        select_fields :=  'airline.sbID,
+                          detail.daLandingTime,
+                          airline.sbDescription,
+                          SUM(track_cost.nuCost) costo';
                 
-        tables_selected:='detail,
-                          airline,
-                          track_cost';
+        tables_selected :=  'detail,
+                            airline,
+                            track_cost';
         
         /* 
-            en el where falta acotar la fecha de inicio y de fin (primer y ultimo dia del mes
+            en el where falta acotar la fecha de inicio y de fin (primer y 
+            ultimo dia del mes y las aerolineas que se quieren liquidar
         */
-        where_clause:='detail.SBAIRLINEID=track_cost.sbAirlineId 
-                      AND detail.SBAIRPLANEMODE=track_cost.SBPLANEMODEID 
-                      AND DETAIL.SBTRACKID=TRACK_COST.SBTRACKID
-                      AND airline.sbId=detail.sbAirlineId';   
-         where_clause:=where_clause
-                        ||' AND detail.daLandingTime >'
+        where_clause :=   ' detail.SBAIRLINEID = track_cost.sbAirlineId 
+                            AND detail.SBAIRPLANEMODE = track_cost.SBPLANEMODEID 
+                            AND DETAIL.SBTRACKID = TRACK_COST.SBTRACKID
+                            AND airline.sbId = detail.sbAirlineId ';   
+         
+         where_clause := where_clause
+                        ||' AND detail.daLandingTime > '
                         ||'TO_DATE('''
                         ||sbYear
                         ||'-'
@@ -75,20 +80,13 @@ IS
                         ||'-01'''
                         ||','''
                         ||'YY-MM-DD'''
-                        ||')'
-                        /*||' AND detail.daLandingTime <'
-                        ||'TO_DATE('''
-                        ||sbYear
-                        ||'-'
-                        ||sbMonth
-                        ||'-31'''
-                        ||','''
-                        ||'YY-MM-DD'''
-                        ||')'*/;
-        groupby_fields:= 'airline.sbID,
-                          detail.daLandingTime,
-                          airline.sbDescription';             
-        sbQuery:=' SELECT '
+                        ||')';
+                        
+        groupby_fields :=   'airline.sbID,
+                            detail.daLandingTime,
+                            airline.sbDescription';             
+        
+        sbQuery :=  ' SELECT '
                     ||select_fields
                     ||' FROM '
                     ||tables_selected
@@ -96,7 +94,7 @@ IS
                     ||where_clause
                     ||' GROUP BY '
                     ||groupby_fields;
-        --dbms_output.put_line(sbQuery);           
+        
         EXECUTE IMMEDIATE sbQuery  BULK COLLECT INTO airline_total;
 
      END getTrackCost;

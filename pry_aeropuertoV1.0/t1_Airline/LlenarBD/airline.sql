@@ -4,7 +4,8 @@ SELECT * FROM landing_bay;
   100 registros
   
 */
- insert into airline (sbId, sbDescription, sbPhoneNumber, sbEmail, sbadress) values (1, 'Foster', '7-(007)116-6287', 'afoster0@furl.net', '841-63-9690');
+INSERT INTO airline (sbId, sbDescription, sbPhoneNumber, sbEmail, sbadress) 
+      VALUES(1, 'Foster', '7-(007)116-6287', 'afoster0@furl.net', '841-63-9690');
 insert into airline (sbId, sbDescription, sbPhoneNumber, sbEmail, sbadress) values (2, 'Johnston', '4-(658)830-2710', 'ajohnston1@bigcartel.com', '528-34-7032');
 insert into airline (sbId, sbDescription, sbPhoneNumber, sbEmail, sbadress) values (3, 'Cook', '7-(387)072-3597', 'tcook2@globo.com', '149-94-3816');
 insert into airline (sbId, sbDescription, sbPhoneNumber, sbEmail, sbadress) values (4, 'Moreno', '6-(626)058-4739', 'emoreno3@unblog.fr', '199-08-4232');

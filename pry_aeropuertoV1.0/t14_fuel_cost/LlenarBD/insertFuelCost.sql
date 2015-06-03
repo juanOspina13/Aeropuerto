@@ -1,5 +1,6 @@
 /*
-  Insercion para costos de combustible, se va a generar todas las combinaciones posibles
+  Insercion para costos de combustible, se va a generar todas las 
+  combinaciones posibles
 */
 DECLARE 
     nuAirlineCount         number;
@@ -37,19 +38,32 @@ DECLARE
     CLOSE cu_airplaneSizeCount;
     
     for i in 1..nuFuelTypeCount LOOP
+    
         for j in 1..nuAirlineCount LOOP
+        
               for k in 1..nuAirplaneSizeCount LOOP
-                  dbms_output.put_line(nuAcum||'=>'||i||'-'||j||'-'||k||'random:'||ROUND(dbms_random.value,2)*100000);
+              
+                  dbms_output.put_line(nuAcum||'=>'||i||'-'||j||'-'
+                                        ||k||'random:'
+                                        ||ROUND(dbms_random.value,2)*100000);
+                                        
                   EXECUTE IMMEDIATE 
-                  'INSERT INTO fuel_cost(sbId,sbAirplaneSize,sbairlineId,sbFuelTypeid,nucost) VALUES ('
-                                                                  ||nuAcum||','
-                                                                  ||k||','
-                                                                  ||j||','
-                                                                  ||i||','
-                                                                  ||ROUND(dbms_random.value,2)*10000||')';
+                  'INSERT INTO fuel_cost(sbId,sbAirplaneSize,
+                                        sbairlineId,sbFuelTypeid,nucost) 
+                                VALUES ('
+                                         ||nuAcum||','
+                                         ||k||','
+                                         ||j||','
+                                         ||i||','
+                                         ||ROUND(dbms_random.value,2)*10000
+                                       ||')';
+                                       
                   nuAcum:=nuAcum+1;
+                  
               END LOOP;
+              
         END LOOP;
+        
     END LOOP;
     
     END;

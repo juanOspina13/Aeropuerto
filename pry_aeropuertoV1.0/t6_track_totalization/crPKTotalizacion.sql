@@ -1,7 +1,7 @@
 /*
  Propiedad intelectual de OPEN International Systems Ltda
 
- Archivo       : crPKAirlines.sql
+ Archivo       : crPKTotalization.sql
 Autor         : Juan ospina
 Fecha         : <28-02-2015> ( Fecha creación )
 
@@ -14,7 +14,7 @@ Modificacion
 
 */ 
  
-ALTER TABLE totalizacion ADD
-    CONSTRAINT totalizacion_pk
+ALTER TABLE track_totalization ADD
+    CONSTRAINT track_totalization_pk
     PRIMARY KEY (sbId)
     USING INDEX ENABLE;

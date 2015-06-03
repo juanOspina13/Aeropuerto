@@ -14,7 +14,9 @@ Modificacion
 */
 CREATE TABLE fuel_totalization(
     sbId            varchar2(256),      
-    daInicio        date,
+    nuYear          number,
+    nuMonth         number,
     sbAirlineId     varchar2(256),
     nuTotal         number
 );
+

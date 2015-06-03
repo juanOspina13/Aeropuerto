@@ -1,11 +1,11 @@
 /*
  Propiedad intelectual de OPEN International Systems Ltda
 
- Archivo       : crFlight_airline.sql
+ Archivo       : crFKFlight_airplane.sql
  Autor         : Juan Ospina
  Fecha         : <28-02-2015> ( Fecha creación )
 
- Descripción   : Creación llave foranea relacionada con Aerolineas
+ Descripción   : Creación llave foranea relacionada con Aviones
  Observaciones :
 
  Historia de Modificaciones
