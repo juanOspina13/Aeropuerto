@@ -21,6 +21,12 @@ CREATE TABLE user_fuels_plane(
         sbFuelTypeId    varchar2(256),    --FK
         sbFlightId      varchar2(256),    --FK
         sbAirlineId     varchar2(256),    --FK
-        sbAirplaneSize varchar2(256)
-        
+        sbAirplaneSize  varchar2(256),
+        nuYear          number,
+        nuMonth         number,
+        nuFuelCost      number
 );
+ 
+
+
+

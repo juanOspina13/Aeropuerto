@@ -1,5 +1,7 @@
 /*
-  Insercion para costos de combustible, se le va a registrar a cada vuelo un 
+  Insercion para costos de combustible 
+  hay que corregirla porque no esta guardando el valor unitario del costo 
+  de combustible, se le va a registrar a cada vuelo un 
   tanqueo, para performance se le agrego a la tabla un campo relacionando el 
   tamaño del avion, cuyo script para actualizar esta en esta misma carpeta
 */
@@ -103,7 +105,9 @@ DECLARE
                                     sbUserId,
                                     sbLandingBayId,
                                     sbFuelTypeId,
-                                    sbFlightId,sbAirlineId
+                                    sbFlightId,
+                                    sbAirlineId,
+                                    nuFuelCost
                             ) VALUES (
                                     :id_tanqueo,
                                     :cantidad,

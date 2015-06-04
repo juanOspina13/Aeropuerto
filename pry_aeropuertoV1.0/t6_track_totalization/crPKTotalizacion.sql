@@ -16,5 +16,8 @@ Modificacion
  
 ALTER TABLE track_totalization ADD
     CONSTRAINT track_totalization_pk
-    PRIMARY KEY (sbId)
+    PRIMARY KEY (sbAirlineId,nuMonth,nuYear)
     USING INDEX ENABLE;
+    
+    
+    

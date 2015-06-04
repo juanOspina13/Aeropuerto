@@ -13,6 +13,6 @@ Fecha          IDEntrega
 Modificacion
 */
 ALTER TABLE fuel_totalization ADD
-    CONSTRAINT fuel_totalization
-    PRIMARY KEY (sbId)
+    CONSTRAINT fuel_totalization_pk
+    PRIMARY KEY (nuYear,nuMonth,sbAirlineId)
     USING INDEX ENABLE;

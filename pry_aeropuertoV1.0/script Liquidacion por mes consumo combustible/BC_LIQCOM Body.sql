@@ -11,74 +11,60 @@ IS
     sbSqlFields     varchar2(512);
     sbSqlWhere      varchar2(512);
     sbSqlFrom       varchar2(512);
+    sbSqlGroupBy    varchar2(512);
     sbCurrentKey    varchar2(512);
+    
     TYPE rec_airCosts IS RECORD
     (
           sbAirlineId   airline.sbId%type,
-          nuCost        fuel_cost.nuCost%type
+          nuMonth       number,
+          nuYear        number,
+          nuTotal       fuel_cost.nuCost%type
     );
     
-    TYPE aux_airCosts IS RECORD
-    (
-          sbAirlineId     airline.sbId%type,
-          nuTotal         fuel_cost.nuCost%type
-    );
     
     TYPE rec_airCost IS TABLE OF rec_airCosts INDEX BY BINARY_INTEGER;
-    TYPE rec_auxCost IS TABLE OF aux_airCosts INDEX BY varchar2(1024);
     
     rec_air   rec_airCost;
-    rec_aux   rec_auxCost;
     
   BEGIN
-      sbSqlFields := ' user_fuels_plane.sbAirlineid,
-                       user_fuels_plane.nuQUantity * fuel_cost.NUCOST 
-                          as costo_tanqueo ';
+      dbms_output.put_line('hola');
+      sbSqlFields := '  user_fuels_plane.sbAirlineId,
+                        EXTRACT(Month FROM user_fuels_plane.daFuelingTime),
+                        EXTRACT(Year FROM user_fuels_plane.daFuelingTime),          
+                        SUM(user_fuels_plane.nuQuantity*fuel_cost.nuCost) ';
                               
       sbSqlFrom := ' user_fuels_plane,
                           fuel_cost ';
 
-      sbSqlWhere:='fuel_cost.sbAirplaneSize = user_fuels_plane.SBAIRPLANESIZE 
-                      AND fuel_cost.SBAIRLINEID = user_fuels_plane.SBAIRLINEID
-                      AND fuel_cost.SBFUELTYPEID = user_fuels_plane.SBFUELTYPEID';                          
+      sbSqlWhere := ' user_fuels_plane.sbFueltypeid=fuel_cost.sbfuelTypeId
+                      AND user_fuels_plane.sbAirlineId=fuel_cost.sbAirlineId
+                      AND user_fuels_plane.sbAirplaneSize=fuel_cost.sbAirplaneSize ';                          
       
+      sbSqlGroupBy:=' user_fuels_plane.sbAirlineId,
+       EXTRACT(Month FROM user_fuels_plane.daFuelingTime),
+       EXTRACT(Year FROM user_fuels_plane.daFuelingTime) ';
       sbSqlString:='SELECT ' 
                     || sbSqlFields 
                     || ' FROM '
                     || sbSqlFrom
                     ||' WHERE '
-                    ||sbSqlWhere;
+                    ||sbSqlWhere
+                    ||' GROUP BY '
+                    ||sbSqlGroupBy;
       
-      EXECUTE IMMEDIATE sbSqlString BULK COLLECT INTO rec_air;      
-      --dbms_output.put_line(sbSqlString);
-        
-      FOR i in rec_air.first .. rec_air.last LOOP
+     -- EXECUTE IMMEDIATE sbSqlString BULK COLLECT INTO rec_air;      
+      dbms_output.put_line(sbSqlString);
       
-          rec_aux( rec_air(i).sbAirlineId ).nuTotal := 0;    
-          rec_aux( rec_air(i).sbAirlineId ).sbAirlineId 
-                  := rec_air(i).sbAirlineId;   
-          
-      END LOOP;
+      dbms_output.put_line(rec_air(1).nuTotal);
       
-      FOR i in rec_air.first .. rec_air.last LOOP
-      
-          rec_aux( rec_air(i).sbAirlineId ).nuTotal 
-          := rec_aux( rec_air(i).sbAirlineId ).nuTotal
-          + rec_air(i).nuCost;      
-          
-      END LOOP;
-      
-     sbCurrentKey := rec_aux.first;
+/*      FOR i in rec_air.first .. rec_air.last LOOP
      
-     WHILE NOT sbCurrentKey IS NULL LOOP
+            dbms_output.put_line(rec_air(i).nuTotal);
+            dbms_output.put_line('hola');
      
-        dbms_output.put_line(sbCurrentKey 
-              || ' ' || rec_aux(sbCurrentKey).nuTotal);
-              
-        sbCurrentKey := rec_aux.next(sbCurrentKey);
-        
-    END LOOP;
-      
+      END LOOP;
+*/
   END get_CombAir;  
 
 END BC_LIQCOM;

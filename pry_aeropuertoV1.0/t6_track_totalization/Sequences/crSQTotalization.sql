@@ -9,7 +9,7 @@
  Observaciones :
 */
 
-CREATE SEQUENCE SQTotalization
+CREATE SEQUENCE SQTrackTotalization
     increment BY 1 start
     with 1
     maxvalue 9999999

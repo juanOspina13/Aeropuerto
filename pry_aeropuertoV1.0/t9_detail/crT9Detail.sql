@@ -21,5 +21,6 @@ CREATE TABLE detail(
     sbAirlineId             varchar2(256),      --FK
     sbAirplaneMode          varchar2(256),   --FK
     sbAirplaneId            varchar2(256),    --FK
-    sbFlightId              varchar2(256)    --FK
+    sbFlightId              varchar2(256),    --FK
+    sbAirplaneSizeId        varchar2(256)     --FK
 );
