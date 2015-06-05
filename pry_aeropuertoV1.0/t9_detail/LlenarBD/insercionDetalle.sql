@@ -40,6 +40,3 @@ BEGIN
 
    END LOOP;
 END;
-/
-SELECT * FROM 
- 

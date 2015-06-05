@@ -4,6 +4,8 @@ Secuencias:
 PB's:Listo:
 Foráneas:Listo
 índices:Faltan
+https://msdn.microsoft.com/es-es/library/jj835095%28v=sql.110%29.aspx
+
 Arquitectura: BC-BO-BA
 
 ir más alla:
