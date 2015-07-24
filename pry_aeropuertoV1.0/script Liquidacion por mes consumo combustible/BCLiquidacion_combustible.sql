@@ -19,7 +19,6 @@ CREATE OR REPLACE PACKAGE BC_LIQCOM IS
   TYPE rec_airComb IS TABLE OF rec_airCombs INDEX BY BINARY_INTEGER;
   
   
-  
   PROCEDURE get_CombAir
   (
         airlines        IN  rec_airline,
@@ -29,7 +28,7 @@ CREATE OR REPLACE PACKAGE BC_LIQCOM IS
   
 END BC_LIQCOM;
 /
-create or replace PACKAGE BODY BC_LIQCOM
+CREATE OR REPLACE PACKAGE BODY BC_LIQCOM
 IS
  PROCEDURE get_CombAir
   (
